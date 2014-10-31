@@ -1,0 +1,10 @@
+{
+    "name": "youngguns/coding-standards",
+    "authors": [
+        {
+            "name": "Jaap van Otterdijk",
+            "email": "jaap@youngguns.nl"
+        }
+    ],
+    "require": {}
+}
