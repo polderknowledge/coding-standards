@@ -1,4 +1,4 @@
-# Coding standards
+# Coding Standards
 
 This repository contains the [PHPCodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer) configuration for PHP 
 coding standards used for all projects. The file is an extension on the PSR-2 defaults. And can be used by any PHP 
@@ -10,7 +10,7 @@ Add the project to your `composer.json` file.
 
 ```
 "require-dev": {
-    "polderknowledge/coding-standards" : "dev-master@dev"
+    "polderknowledge/coding-standards" : "dev-master"
 },
 ```
 
