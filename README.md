@@ -17,7 +17,7 @@ Add the project to your `composer.json` file.
 Set the standard attribute in your build script to:
 
 ```xml
-<phpcodesniffer standard="${project.basedir}/vendor/polderknowledge/coding-standards/ruleset.xml">
+<phpcodesniffer standard="${project.basedir}/vendor/polderknowledge/coding-standards/PolderKnowledge/ruleset.xml">
     <!-- rest of your phpcodesniffer target -->
 </phpcodesniffer>
 ```
