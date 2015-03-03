@@ -1,21 +1,23 @@
 # Coding standards
 
-This repository contains the phpcodesniffer configuration for php coding standards used for all projects. The file is an extension on the PSR-2 defaults. And can be used by any php project.
+This repository contains the [PHPCodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer) configuration for PHP 
+coding standards used for all projects. The file is an extension on the PSR-2 defaults. And can be used by any PHP 
+project.
 
-## How to use
+## Installation
+
 Add the project to your `composer.json` file. 
 
 ```
-    "require-dev": {
-        "youngguns/coding-standards" : "dev-master@dev"
-    },
+"require-dev": {
+    "polderknowledge/coding-standards" : "dev-master@dev"
+},
 ```
 
-set the standard attribute in your build script to 
+Set the standard attribute in your build script to:
 
 ```xml
- <phpcodesniffer
-            standard="${project.basedir}/vendor/youngguns/coding-standards/Youngguns.xml">
+ <phpcodesniffer standard="${project.basedir}/vendor/polderknowledge/coding-standards/ruleset.xml">
     <!-- rest of your phpcodesniffer target -->
 </phpcodesniffer>
 ```
