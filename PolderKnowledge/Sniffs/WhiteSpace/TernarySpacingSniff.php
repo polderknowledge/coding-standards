@@ -5,7 +5,7 @@ class PolderKnowledge_Sniffs_WhiteSpace_TernarySpacingSniff implements \PHP_Code
     public function process(\PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
-        
+
         // Make sure there is one space before.
         $previousToken = $phpcsFile->findPrevious(T_WHITESPACE, ($stackPtr - 1), null, true);
         if ($stackPtr - $previousToken === 1) {
