@@ -1,3 +1,4 @@
 {
-    "name": "polderknowledge/coding-standards"
+    "name": "polderknowledge/coding-standards",
+    "target-dir": "PolderKnowledge"
 }
