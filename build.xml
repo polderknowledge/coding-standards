@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="polderknowledge/coding-standards" default="build" basedir=".">
+    <property name="bindir" value="${project.basedir}/vendor/bin" override="true" />
+    <property name="builddir" value="${project.basedir}/build" override="true" />
+    <property name="fileset" value="source" override="true"/>
+
+    <fileset id="source" dir="${project.basedir}/PolderKnowledge/Sniffs">
+        <include name="**/*.php" />
+    </fileset>
+
+    <target name="clean">
+        <delete dir="${builddir}" includeemptydirs="true" verbose="true" failonerror="false" />
+    </target>
+
+    <target name="prepare">
+        <mkdir dir="${builddir}" />
+    </target>
+
+    <target name="build" depends="prepare, checksyntax, checkstyle" />
+
+    <target name="checksyntax" depends="prepare">
+        <phplint>
+            <fileset dir="${project.basedir}">
+                <include name="src/**/*.php" />
+                <exclude name="**/vendor/**" />
+            </fileset>
+        </phplint>
+    </target>
+
+    <target name="checkstyle" depends="prepare">
+        <phpcodesniffer
+            standard="${project.basedir}/ruleset.xml"
+            format="summary" 
+            skipversioncheck="true">
+            <fileset refid="${fileset}" />
+
+            <formatter type="full" usefile="false"/>
+            <formatter type="checkstyle" outfile="${builddir}/checkstyle-codesniffer.xml"/>
+        </phpcodesniffer>
+    </target>
+</project>

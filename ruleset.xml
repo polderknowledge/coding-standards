@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<ruleset>
+    <description>The Polder Knowledge coding standards.</description>
+    
+    <rule ref="./PolderKnowledge/ruleset.xml" />
+    
+    <!-- Disabled since CodeSniffer expects the currently used class names. -->
+    <rule ref="Squiz.Classes.ValidClassName.NotCamelCaps">
+        <severity>0</severity>
+    </rule>
+    
+    <!-- Disabled since CodeSniffer does not support namespaces. -->
+    <rule ref="PSR1.Classes.ClassDeclaration.MissingNamespace">
+        <severity>0</severity>
+    </rule>
+</ruleset>
