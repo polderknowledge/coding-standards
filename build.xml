@@ -21,7 +21,7 @@
     <target name="checksyntax" depends="prepare">
         <phplint>
             <fileset dir="${project.basedir}">
-                <include name="src/**/*.php" />
+                <include name="PolderKnowledge/**/*.php" />
                 <exclude name="**/vendor/**" />
             </fileset>
         </phplint>
