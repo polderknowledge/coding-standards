@@ -20,7 +20,7 @@ class PolderKnowledge_Sniffs_Naming_VariableNameSniff implements PHP_CodeSniffer
             return;
         }
 
-        if (!preg_match('/^\$[a-z]+[a-zA-Z0-9]*$/', $variableName)) {
+        if (!preg_match('/^\$[a-z][a-zA-Z0-9]*$/', $variableName)) {
             $error = sprintf(
                 'Invalid variable name %s, should follow the convention [a-z]+[a-zA-Z0-9]*',
                 $variableName
