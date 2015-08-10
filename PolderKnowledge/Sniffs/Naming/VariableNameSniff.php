@@ -1,6 +1,6 @@
 <?php
 
-class PolderKnowledge_Sniffs_Naming_VariableNameSniff implements \PHP_CodeSniffer_Sniff
+class PolderKnowledge_Sniffs_Naming_VariableNameSniff implements PHP_CodeSniffer_Sniff
 {
     const VALID_VARIABLES = array(
         '$_COOKIE',
@@ -11,7 +11,7 @@ class PolderKnowledge_Sniffs_Naming_VariableNameSniff implements \PHP_CodeSniffe
         '$GLOBALS',
     );
 
-    public function process(\PHP_CodeSniffer_File $phpcsFile, $stackPtr)
+    public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
         $variableName = $tokens[$stackPtr]['content'];

@@ -1,8 +1,8 @@
 <?php
 
-class PolderKnowledge_Sniffs_WhiteSpace_AssignmentSpacingSniff implements \PHP_CodeSniffer_Sniff
+class PolderKnowledge_Sniffs_WhiteSpace_AssignmentSpacingSniff implements PHP_CodeSniffer_Sniff
 {
-    public function process(\PHP_CodeSniffer_File $phpcsFile, $stackPtr)
+    public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
 
