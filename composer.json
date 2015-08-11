@@ -1,10 +1,20 @@
 {
     "name": "polderknowledge/coding-standards",
     "require": {
-        "php": ">=5.3.0"
+        "php": ">=5.3.0",
+        "squizlabs/php_codesniffer": "~2.0"
     },
     "require-dev": {
         "phing/phing": "~2.10",
+        "phpunit/phpunit": "~4.5",
         "squizlabs/php_codesniffer": "~2.3"
+    },
+    "autoload-dev": {
+        "classmap": [
+            "PolderKnowledge/"
+        ],
+        "psr-4": {
+            "PolderKnowledge\\SniffsTest\\": "tests/SniffsTest"
+        }
     }
 }
