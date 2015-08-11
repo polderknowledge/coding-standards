@@ -3,6 +3,7 @@
     <property name="bindir" value="${project.basedir}/vendor/bin" override="true" />
     <property name="builddir" value="${project.basedir}/build" override="true" />
     <property name="fileset" value="source" override="true"/>
+    <property name="testdir" value="${project.basedir}/tests" override="true" />
 
     <fileset id="source" dir="${project.basedir}/PolderKnowledge/Sniffs">
         <include name="**/*.php" />
@@ -16,7 +17,7 @@
         <mkdir dir="${builddir}" />
     </target>
 
-    <target name="build" depends="prepare, checksyntax, checkstyle" />
+    <target name="build" depends="prepare, checksyntax, checkstyle, test" />
 
     <target name="checksyntax" depends="prepare">
         <phplint>
@@ -37,5 +38,9 @@
             <formatter type="full" usefile="false"/>
             <formatter type="checkstyle" outfile="${builddir}/checkstyle-codesniffer.xml"/>
         </phpcodesniffer>
+    </target>
+    
+    <target name="test" depends="prepare">
+        <exec command="${project.basedir}/vendor/bin/phpunit" passthru="true" level="info" checkreturn="true"/>
     </target>
 </project>
