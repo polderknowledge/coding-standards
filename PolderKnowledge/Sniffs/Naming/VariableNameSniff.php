@@ -2,7 +2,8 @@
 
 class PolderKnowledge_Sniffs_Naming_VariableNameSniff implements PHP_CodeSniffer_Sniff
 {
-    const VALID_VARIABLES = array(
+    // Should be a constant but this is not supported in all PHP versions.
+    private $validVariables = array(
         '$_COOKIE',
         '$_GET',
         '$_POST',
@@ -16,7 +17,7 @@ class PolderKnowledge_Sniffs_Naming_VariableNameSniff implements PHP_CodeSniffer
         $tokens = $phpcsFile->getTokens();
         $variableName = $tokens[$stackPtr]['content'];
 
-        if (in_array($variableName, self::VALID_VARIABLES)) {
+        if (in_array($variableName, $this->validVariables)) {
             return;
         }
 
