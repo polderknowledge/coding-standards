@@ -41,7 +41,7 @@ class PolderKnowledge_Sniffs_WhiteSpace_AssignmentSpacingSniff implements PHP_Co
 
     public function register()
     {
-        return array(
+        $tokens = array(
             T_EQUAL,
             T_AND_EQUAL,
             T_CONCAT_EQUAL,
@@ -51,10 +51,16 @@ class PolderKnowledge_Sniffs_WhiteSpace_AssignmentSpacingSniff implements PHP_Co
             T_MUL_EQUAL,
             T_OR_EQUAL,
             T_PLUS_EQUAL,
-            T_POW_EQUAL,
             T_SL_EQUAL,
             T_SR_EQUAL,
             T_XOR_EQUAL,
         );
+
+        // T_POW_EQUAL is only available from PHP 5.6
+        if (defined('T_POW_EQUAL')) {
+            $tokens[] = T_POW_EQUAL;
+        }
+
+        return $tokens;
     }
 }
