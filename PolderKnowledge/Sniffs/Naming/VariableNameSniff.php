@@ -8,6 +8,7 @@ class PolderKnowledge_Sniffs_Naming_VariableNameSniff implements PHP_CodeSniffer
         '$_GET',
         '$_POST',
         '$_REQUEST',
+        '$_SERVER',
         '$_SESSION',
         '$GLOBALS',
     );
