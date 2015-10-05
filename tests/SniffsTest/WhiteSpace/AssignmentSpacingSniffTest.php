@@ -16,7 +16,7 @@ class AssignmentSpacingSniffTest extends TestCase
         $result = $sniff->register();
 
         // Assert
-        $this->assertEquals(array(
+        $expected = array(
             T_EQUAL,
             T_AND_EQUAL,
             T_CONCAT_EQUAL,
@@ -26,11 +26,16 @@ class AssignmentSpacingSniffTest extends TestCase
             T_MUL_EQUAL,
             T_OR_EQUAL,
             T_PLUS_EQUAL,
-            T_POW_EQUAL,
             T_SL_EQUAL,
             T_SR_EQUAL,
             T_XOR_EQUAL,
-        ), $result);
+        );
+
+        // T_POW_EQUAL is only available from PHP 5.6
+        if (defined('T_POW_EQUAL')) {
+            $expected[] = T_POW_EQUAL;
+        }
+        $this->assertEquals($expected, $result);
     }
 
     public function testProcessWithBothErrors()
