@@ -19,6 +19,19 @@ class DoubleArrowSpacingSniffTestTest extends TestCase
         $this->assertEquals(array(T_DOUBLE_ARROW), $result);
     }
 
+    public function testProcessWithSuccess()
+    {
+        // Arrange
+        $sniff = new \PolderKnowledge_Sniffs_WhiteSpace_DoubleArrowSpacingSniff();
+
+        // Act
+        $file = $this->executeSniffTest('tests/SniffsTestAsset/WhiteSpace/arrow-success.php', $sniff);
+
+        // Assert
+        $this->assertEquals(0, $file->getWarningCount());
+        $this->assertEquals(0, $file->getErrorCount());
+    }
+
     public function testProcessWithBothErrors()
     {
         // Arrange
@@ -56,5 +69,31 @@ class DoubleArrowSpacingSniffTestTest extends TestCase
         // Assert
         $this->assertEquals(0, $file->getWarningCount());
         $this->assertEquals(1, $file->getErrorCount());
+    }
+
+    public function testProcessWithNewLineAfter()
+    {
+        // Arrange
+        $sniff = new \PolderKnowledge_Sniffs_WhiteSpace_DoubleArrowSpacingSniff();
+
+        // Act
+        $file = $this->executeSniffTest('tests/SniffsTestAsset/WhiteSpace/arrow-new-line-after.php', $sniff);
+
+        // Assert
+        $this->assertEquals(0, $file->getWarningCount());
+        $this->assertEquals(0, $file->getErrorCount());
+    }
+
+    public function testProcessWithNewLineBefore()
+    {
+        // Arrange
+        $sniff = new \PolderKnowledge_Sniffs_WhiteSpace_DoubleArrowSpacingSniff();
+
+        // Act
+        $file = $this->executeSniffTest('tests/SniffsTestAsset/WhiteSpace/arrow-new-line-before.php', $sniff);
+
+        // Assert
+        $this->assertEquals(0, $file->getWarningCount());
+        $this->assertEquals(0, $file->getErrorCount());
     }
 }

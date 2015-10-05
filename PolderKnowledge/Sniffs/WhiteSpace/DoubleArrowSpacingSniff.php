@@ -13,7 +13,9 @@ class PolderKnowledge_Sniffs_WhiteSpace_DoubleArrowSpacingSniff implements PHP_C
             if ($phpcsFile->fixer->enabled === true) {
                 $phpcsFile->fixer->addContent($stackPtr - 1, ' ');
             }
-        } elseif ($tokens[$stackPtr - 1]['length'] > 1) {
+        } elseif ($tokens[$stackPtr - 1]['length'] > 1 &&
+            !$this->containsNewLine($tokens[$stackPtr - 1]['content'])
+            && $tokens[$stackPtr - 1]['column'] !== 1) {
             $error = 'Expected 1 space before double arrow, found more than one.';
             $phpcsFile->addFixableError($error, $stackPtr, 'TooManyFound');
 
@@ -29,7 +31,9 @@ class PolderKnowledge_Sniffs_WhiteSpace_DoubleArrowSpacingSniff implements PHP_C
             if ($phpcsFile->fixer->enabled === true) {
                 $phpcsFile->fixer->addContent($stackPtr, ' ');
             }
-        } elseif ($tokens[$stackPtr + 1]['length'] > 1) {
+        } elseif ($tokens[$stackPtr + 1]['length'] > 1 &&
+            !$this->containsNewLine($tokens[$stackPtr + 1]['content']) &&
+            $tokens[$stackPtr + 1]['column'] !== 1) {
             $error = 'Expected 1 space after double arrow, found more than one.';
             $phpcsFile->addFixableError($error, $stackPtr, 'TooManyFound');
 
@@ -42,5 +46,17 @@ class PolderKnowledge_Sniffs_WhiteSpace_DoubleArrowSpacingSniff implements PHP_C
     public function register()
     {
         return array(T_DOUBLE_ARROW);
+    }
+
+    private function containsNewLine($content)
+    {
+        for ($i = 0; $i < strlen($content); ++$i) {
+            $char = ord($content[$i]);
+
+            if ($char === 10 || $char === 13) {
+                return true;
+            }
+        }
+        return false;
     }
 }
