@@ -1,11 +1,9 @@
 language: php
 
 php:
-  - 5.5
-  - 5.6
-  - 7.0
   - 7.1
-  - hhvm
+  - 7.2
+  - 7.3
 
 # This triggers builds to run on the new TravisCI infrastructure.
 # See: http://docs.travis-ci.com/user/workers/container-based-infrastructure/
@@ -17,10 +15,8 @@ cache:
     - $HOME/.composer/cache
 
 matrix:
-  allow_failures:
-    - php: 5.5
   include:
-    - php: 5.6
+    - php: 7.1
       env: 'COMPOSER_FLAGS="--prefer-stable --prefer-lowest"'
 
 before_script:
@@ -29,11 +25,10 @@ before_script:
 
 script:
   - vendor/bin/phpcs --standard=ruleset.xml PolderKnowledge/
-  - vendor/bin/phpunit
 
 after_script:
   - |
-    if [[ "$TRAVIS_PHP_VERSION" == '5.6' ]]; then
+    if [[ "$TRAVIS_PHP_VERSION" == '7.1' ]]; then
       wget https://scrutinizer-ci.com/ocular.phar
       php ocular.phar code-coverage:upload --format=php-clover build/logs/clover.xml
     fi
