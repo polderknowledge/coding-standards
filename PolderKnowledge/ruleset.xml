@@ -5,7 +5,12 @@
     <description>The Polder Knowledge coding standards.</description>
 
     <rule ref="Doctrine">
+        <exclude name="Generic.Formatting.MultipleStatementAlignment"/>
         <exclude name="Generic.Formatting.SpaceAfterNot"/>
+    </rule>
+
+    <rule ref="Squiz.Commenting.FunctionComment">
+        <exclude name="Squiz.Commenting.FunctionComment.SpacingAfterParamType"/>
     </rule>
 
     <rule ref="SlevomatCodingStandard.TypeHints.ReturnTypeHintSpacing">
