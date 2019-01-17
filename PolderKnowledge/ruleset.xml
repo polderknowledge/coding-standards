@@ -6,6 +6,7 @@
 
     <rule ref="Doctrine">
         <exclude name="Generic.Formatting.MultipleStatementAlignment"/>
+        <exclude name="Generic.Formatting.SpaceAfterCast"/>
         <exclude name="Generic.Formatting.SpaceAfterNot"/>
     </rule>
 
